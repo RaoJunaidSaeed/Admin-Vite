@@ -55,36 +55,41 @@ const Navbar = () => {
     };
   }, [menuOpen]);
 
-  const AdminLinks = () => (
-    <>
-      <Link to="/admin-dashboard" className="nav-link flex items-center gap-2 px-4 py-2">
-        <Home className="w-4 h-4" /> Properties
-      </Link>
-      <Link to="/admin/users" className="nav-link flex items-center gap-2 px-4 py-2">
-        <User className="w-4 h-4" /> Users
-      </Link>
-      <Link to="/admin/plans" className="nav-link flex items-center gap-2 px-4 py-2">
-        <FileText className="w-4 h-4" /> Plans
-      </Link>
-      <Link to="/admin/payments" className="nav-link flex items-center gap-2 px-4 py-2">
-        <CreditCard className="w-4 h-4" /> Payments
-      </Link>
-      <Link
-        to="/profile"
-        className="nav-link flex items-center gap-2 hover-lift px-3 py-2 rounded-xl"
-      >
-        <User className="w-4 h-4" />
-        Profile
-      </Link>
-      <Link
-        to="/settings"
-        className="nav-link flex items-center gap-2 hover-lift px-3 py-2 rounded-xl"
-      >
-        <User className="w-4 h-4" />
-        Settings
-      </Link>
-    </>
-  );
+  // const AdminLinks = (onClick) => (
+  //   <>
+  //     <Link
+  //       to="/admin-dashboard"
+  //       onClick={onClick}
+  //       className="nav-link flex items-center gap-2 px-4 py-2"
+  //     >
+  //       <Home className="w-4 h-4" /> Properties
+  //     </Link>
+  //     {/* <Link to="/admin/users" className="nav-link flex items-center gap-2 px-4 py-2">
+  //       <User className="w-4 h-4" /> Users
+  //     </Link>
+  //     <Link to="/admin/plans" className="nav-link flex items-center gap-2 px-4 py-2">
+  //       <FileText className="w-4 h-4" /> Plans
+  //     </Link>
+  //     <Link to="/admin/payments" className="nav-link flex items-center gap-2 px-4 py-2">
+  //       <CreditCard className="w-4 h-4" /> Payments
+  //     </Link>
+  //     <Link
+  //       to="/profile"
+  //       className="nav-link flex items-center gap-2 hover-lift px-3 py-2 rounded-xl"
+  //     >
+  //       <User className="w-4 h-4" />
+  //       Profile
+  //     </Link> */}
+  //     <Link
+  //       to="/settings"
+  //       onClick={onClick}
+  //       className="nav-link flex items-center gap-2 hover-lift px-3 py-2 rounded-xl"
+  //     >
+  //       <User className="w-4 h-4" />
+  //       Settings
+  //     </Link>
+  //   </>
+  // );
 
   const UserInfo = () => (
     <div className="flex items-center gap-2 px-4 py-2 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -117,14 +122,24 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {user?.role === 'admin' ? (
             <>
-              <AdminLinks />
+              {/* <AdminLinks /> */}
+              <Link to="/admin-dashboard" className="nav-link flex items-center gap-2 px-4 py-2">
+                <Home className="w-4 h-4" /> Properties
+              </Link>
               <UserInfo />
-              <button
+              <Link
+                to="/settings"
+                className="nav-link flex items-center gap-2 hover-lift px-3 py-2 rounded-xl"
+              >
+                <User className="w-4 h-4" />
+                Settings
+              </Link>
+              {/* <button
                 onClick={handleLogout}
                 className="text-cherry font-semibold hover:bg-cherry/10 px-4 py-2 rounded-xl transition flex items-center gap-2"
               >
                 <LogOut className="w-4 h-4" /> Logout
-              </button>
+              </button> */}
             </>
           ) : (
             <>
@@ -150,14 +165,29 @@ const Navbar = () => {
         >
           {user?.role === 'admin' ? (
             <>
-              <AdminLinks />
+              {/* <AdminLinks onClick={() => setMenuOpen(false)} /> */}
+              <Link
+                to="/admin-dashboard"
+                onClick={() => setMenuOpen(false)}
+                className="nav-link flex items-center gap-2 px-4 py-2"
+              >
+                <Home className="w-4 h-4" /> Properties
+              </Link>
               <UserInfo />
-              <button
+              <Link
+                to="/settings"
+                onClick={() => setMenuOpen(false)}
+                className="nav-link flex items-center gap-2 hover-lift px-3 py-2 rounded-xl"
+              >
+                <User className="w-4 h-4" />
+                Settings
+              </Link>
+              {/* <button
                 onClick={handleLogout}
                 className="text-cherry font-semibold hover:bg-cherry/10 px-4 py-2 rounded-xl transition flex items-center gap-2"
               >
                 <LogOut className="w-4 h-4" /> Logout
-              </button>
+              </button> */}
             </>
           ) : (
             <>

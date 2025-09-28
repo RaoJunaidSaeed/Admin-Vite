@@ -72,30 +72,30 @@ export default function AdminSupportChat({ adminId }) {
   };
 
   return (
-    <div className="flex h-[90vh] border rounded-lg shadow-lg bg-white overflow-hidden">
+    <div className="flex h-[90vh] w-full border overflow-scroll ">
       {/* Sidebar (Conversations) */}
       <div
         className={`${
           selectedConversation ? 'hidden md:block' : 'block'
-        } w-full md:w-1/3 border-r bg-gray-50`}
+        } w-full sm:w-1/4 border-r bg-gradient-to-br from-gray-900 to-green-900`}
       >
-        <h2 className="p-4 font-bold text-lg border-b bg-green-600 text-white">Support Chats</h2>
+        <h2 className="p-4 font-bold text-lg border-b bg-green-900 text-white">Support Chat</h2>
         {conversations.length > 0 ? (
           conversations.map((c) => (
             <div
               key={c._id}
-              className={`p-4 cursor-pointer hover:bg-green-100 ${
-                selectedConversation?._id === c._id ? 'bg-green-200' : ''
+              className={`p-4 border-b cursor-pointer  ${
+                selectedConversation?._id === c._id ? 'bg-green-700' : 'bg-green-800'
               }`}
               onClick={() => openConversation(c)}
             >
-              <p className="font-semibold text-gray-700">
+              <p className="font-semibold text-white/70">
                 {c.members
                   .filter((m) => m._id !== adminId)
                   .map((m) => `${m.firstName} ${m.lastName}`)
                   .join(', ')}
               </p>
-              <p className="text-xs text-gray-500 truncate">{c.lastMessage || 'No messages yet'}</p>
+              <p className="text-xs text-white/60 truncate">{c.lastMessage || 'No messages yet'}</p>
             </div>
           ))
         ) : (
@@ -105,18 +105,20 @@ export default function AdminSupportChat({ adminId }) {
 
       {/* Chat window */}
       <div
-        className={`${selectedConversation ? 'flex' : 'hidden'} md:flex w-full md:w-2/3 flex-col`}
+        className={`${
+          selectedConversation ? 'flex-1' : 'hidden'
+        } md:flex w-full  md:w-2/3 flex-col`}
       >
         {selectedConversation ? (
           <>
             {/* Chat header */}
-            <div className="p-4 bg-green-600 text-white font-semibold flex items-center">
+            <div className="p-4 bg-gradient-to-br from-gray-900 to-green-900 text-white font-semibold flex items-center">
               {/* Back button (mobile only) */}
               <button
-                className="mr-3 md:hidden bg-green-700 px-2 py-1 rounded text-sm"
+                className="mr-3 md:hidden  px-2 py-1 rounded text-sm"
                 onClick={() => setSelectedConversation(null)}
               >
-                ← Back
+                Back
               </button>
               Chat with{' '}
               {selectedConversation.members
@@ -126,15 +128,15 @@ export default function AdminSupportChat({ adminId }) {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 p-4 overflow-y-auto bg-gray-100">
+            <div className="flex-1 h-[71vh] p-4 overflow-y-auto bg-gradient-to-br from-gray-900 to-green-900">
               {messages.length > 0 ? (
                 messages.map((msg) => (
                   <div
                     key={msg._id}
                     className={`max-w-[70%] mb-2 p-2 rounded-lg text-sm relative ${
                       msg.senderId === adminId
-                        ? 'ml-auto bg-green-500 text-white rounded-br-none'
-                        : 'mr-auto bg-white text-gray-800 border rounded-bl-none'
+                        ? 'ml-auto bg-gradient-to-r from-primary to-secondary text-white rounded-br-none'
+                        : 'mr-auto bg-white/80 text-gray-900 border rounded-bl-none'
                     }`}
                   >
                     <div>{msg.content}</div>
