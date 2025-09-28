@@ -1,0 +1,40 @@
+@import url("slick-carousel/slick/slick.css");
+@import url("slick-carousel/slick/slick-theme.css");
+@import url("react-image-lightbox/style.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer components {
+  .input {
+  @apply w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-dark;
+}
+
+.btn-primary {
+  @apply w-full bg-brand-dark text-white py-2 rounded-md hover:bg-brand-dark/90;
+}
+
+.btn-secondary {
+  @apply w-full bg-gray-200 text-gray-800 py-2 rounded-md hover:bg-gray-300;
+}
+
+}
+
+
+/* Give padding-bottom to slick dots */
+.slick-dots {
+  padding-bottom: 1.5rem; /* Adjust as needed (e.g., 24px) */
+}
+
+@layer components {
+  .slick-dots {
+    padding-bottom: 1.5rem;
+  }
+}
+
+
+
