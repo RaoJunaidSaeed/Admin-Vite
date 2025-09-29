@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import { useLoading } from '../context/LoadingContext';
 
 const AdminUserPage = () => {
-  const { setIsLoading } = useLoading();
+  const { isLoading, setIsLoading } = useLoading();
   const [users, setUsers] = useState([]);
   const [showUserForm, setShowUserForm] = useState(false);
   const [isUserEditing, setIsUserEditing] = useState(false);
@@ -65,6 +65,7 @@ const AdminUserPage = () => {
   const handleUserSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const formData = new FormData();
       Object.entries(userFormData).forEach(([key, val]) => formData.append(key, val));
       if (photoFile) formData.append('photo', photoFile);
@@ -86,6 +87,7 @@ const AdminUserPage = () => {
       setShowUserForm(false);
     } catch (err) {
       toast.error('Failed to submit user form');
+      setIsLoading(false);
     }
   };
 
@@ -152,7 +154,7 @@ const AdminUserPage = () => {
 
   return (
     <>
-      {confirmDelete.show && (
+      {!isLoading && confirmDelete.show && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center px-4">
           <div className="bg-white text-gray-800 rounded-xl p-6 max-w-sm w-full shadow-lg">
             <h3 className="text-lg font-semibold mb-4">Confirm Deletion</h3>

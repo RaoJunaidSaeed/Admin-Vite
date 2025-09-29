@@ -9,6 +9,7 @@ import AdminUserPage from './AdminUserPage';
 import AdminPlans from './AdminPlans';
 import AdminPaymentPage from './AdminPaymentPage';
 import UserProfile from './UserProfile';
+import { useLoading } from '../context/LoadingContext';
 
 export default function AdminSettingsPage() {
   const { user } = useContext(AuthContext);
@@ -89,6 +90,7 @@ export default function AdminSettingsPage() {
       </div>
 
       {/* Main Section */}
+
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <div

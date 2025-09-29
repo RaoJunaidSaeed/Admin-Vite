@@ -13,7 +13,7 @@ const formFields = [
 ];
 
 const AdminPlans = () => {
-  const { setIsLoading } = useLoading();
+  const { isLoading, setIsLoading } = useLoading();
   const formWrapperRef = useRef(null);
 
   const [showForm, setShowForm] = useState(false);
@@ -149,7 +149,7 @@ const AdminPlans = () => {
 
   return (
     <>
-      {confirmDelete.show && (
+      {!isLoading && confirmDelete.show && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center px-4">
           <div className="bg-white text-gray-800 rounded-xl p-6 max-w-sm w-full shadow-lg">
             <h3 className="text-lg font-semibold mb-4">Confirm Deletion</h3>
