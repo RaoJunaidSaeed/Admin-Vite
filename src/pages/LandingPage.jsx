@@ -135,7 +135,7 @@ const LandingPage = () => {
                     Get Started
                   </button>
                 </Link>
-                <Link to="/properties">
+                <Link to="/admin-dashboard">
                   <button className="border-2 border-white text-white py-3 px-8 rounded-lg hover:bg-white/10 transition">
                     Browse Properties
                   </button>
